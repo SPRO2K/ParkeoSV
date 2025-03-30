@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkeoSV - Encuentra Parqueo (OSM)</title>
+
+    <!-- PWA y Metadatos -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2"/>
+    <!-- Usando placeholder para icono iOS, reemplazar por uno real si se desea -->
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/4A90E2/FFFFFF/png?text=P">
+    <meta name="description" content="Encuentra parqueos cercanos en El Salvador usando datos de OpenStreetMap.">
+
+    <!-- Fuente Google Fonts (Opcional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ** LEAFLET CSS (Archivo Local) ** -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+
+    <!-- Tu CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Estilos adicionales o overrides -->
+    <style>
+        #map-container { background-color: #eee; z-index: 0; }
+        .leaflet-popup-content-wrapper { border-radius: 5px !important; }
+        .leaflet-popup-content p { margin: 0.5em 0 !important; }
+        .leaflet-marker-icon { background-color: transparent; }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal de la aplicación (Flexbox) -->
+    <div class="app-container">
+
+        <!-- Barra Lateral -->
+        <aside id="sidebar">
+            <header class="sidebar-header">
+                <h1>ParkeoSV</h1>
+            </header>
+            <!-- Div para mostrar mensajes de error al usuario -->
+            <div id="error-messages" style="display: none;"></div>
+            <!-- Lista donde se insertarán los parqueos encontrados -->
+            <div id="parking-list">
+                <!-- Contenido dinámico generado por JS -->
+            </div>
+        </aside>
+
+        <!-- Contenedor principal para el mapa -->
+        <main id="map-container">
+            <!-- El mapa Leaflet se renderizará aquí por JS -->
+        </main>
+    </div>
+
+    <!-- Vista de Detalle (Modal/Overlay) -->
+    <div id="detail-view"> <!-- Inicialmente oculto vía CSS -->
+        <!-- Wrapper para centrar el contenido y aplicar estilos -->
+        <div id="detail-content-wrapper">
+            <!-- Botón para cerrar la vista de detalle -->
+            <button id="detail-close" title="Cerrar">×</button>
+            <!-- Contenedor donde se insertará la info del parqueo seleccionado -->
+            <div id="detail-content">
+                <!-- Contenido dinámico generado por JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicador de Carga (Overlay) -->
+    <div id="loading-indicator" style="display: flex;"> 
+        <span>Cargando...</span>
+    </div>
+
+    <!-- ========== SCRIPTS JAVASCRIPT ========== -->
+
+    <!-- 1. Librería Leaflet (Archivo Local) -->
+    <script src="js/leaflet.js"></script>
+
+    <!-- 2. Tus Scripts de Utilidades o Módulos -->
+    <script src="js/haversine.js"></script>    <!-- Función para calcular distancia -->
+
+    <!-- 3. Tu código que DEFINE las funciones del mapa (usa la librería Leaflet) -->
+    <script src="js/leaflet-map.js"></script>
+
+    <!-- 4. Tu código principal que LLAMA a las funciones (usa las funciones definidas antes) -->
+    <script src="js/main.js"></script>         <!-- Lógica principal (SIN defer) -->
+
+</body>
+</html>
